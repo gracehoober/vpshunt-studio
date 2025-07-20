@@ -34,8 +34,9 @@ Visit http://localhost:5173 in your browser to see the app running.
 • Move all text to locales
 • Add router
 • Add testing to current components
-• Add Tanstack query for API calls??
+• Add Tanstack query for API calls?? / Make real API
 • Add client state - React Context API, redux, zustant, mobx...
+• Add ticket tracking
 
 ### Future Plans
 
