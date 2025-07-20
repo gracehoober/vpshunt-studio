@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# VPShunt-Studio
 
-Currently, two official plugins are available:
+#### VPShunt-Studio is a lightweight dashboard for healthcare providers to monitor the status of patients’ ventriculoperitoneal (VP) shunts.
+Shunt failure is a common complication for patients with hydrocephalus. VPShunt-Studio helps surface critical patient data for care teams—bringing clarity and anticipation into an often reactive clinical process.
+Built with modern web technologies, it provides a user-friendly interface for uploading data and visualizing key indicators related to shunt performance and replacement needs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+	•	React
+	•	TypeScript
+	•	Vite
+	•	Material UI (MUI)
 
-## Expanding the ESLint configuration
+## Features
+	•	Upload CSV data of patient records
+	•	Display a dashboard with current shunt status
+	•	Simple, responsive UI for clinical workflows
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
+`
+git clone https://github.com/gracehoober/vpshunt-studio.git
+cd vpshunt-studio
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+npm run dev
+`
+Visit http://localhost:5173 in your browser to see the app running.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Future Plans
+	•	Integrate patient history visualization
+	•	Add predictive analytics for shunt failure
+	•	User authentication and role-based access
