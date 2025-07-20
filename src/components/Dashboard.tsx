@@ -1,5 +1,5 @@
 import { NavBar } from "./NavBar";
-import { Button, Box, Grid, Typography, Paper } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import { useState } from 'react';
 import { NewEntry } from "./NewEntry";
 import React from "react";
@@ -46,25 +46,30 @@ const Dashboard: React.FC = () => {
     }));
 
     return (
-        <Box sx={styles.box}>
-            <DataGrid
-                columns={columns}
-                rows={rows}
-                checkboxSelection
-                disableRowSelectionOnClick>
-            </DataGrid>
-            <Button
-                variant="contained"
-                sx={styles.button}
-                onClick={() => setIsNewEntryOpen(true)}>
-                Add new entry
-            </Button>
-            {isNewEntryOpen &&
-                <NewEntry
-                    open={isNewEntryOpen}
-                    onClose={() => setIsNewEntryOpen(false)} />
-            }
-        </Box>
+        <>
+            <NavBar />
+            <Box sx={styles.box}>
+                <DataGrid
+                    columns={columns}
+                    rows={rows}
+                    pagination
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                    sx={styles.grid}>
+                </DataGrid>
+                <Button
+                    variant="contained"
+                    sx={styles.button}
+                    onClick={() => setIsNewEntryOpen(true)}>
+                    Add new entry
+                </Button>
+                {isNewEntryOpen &&
+                    <NewEntry
+                        open={isNewEntryOpen}
+                        onClose={() => setIsNewEntryOpen(false)} />
+                }
+            </Box>
+        </>
     );
 };
 
@@ -73,15 +78,15 @@ const styles = {
         backgroundColor: 'background.dashboard',
         width: '100vw',
         height: '100vh',
-        padding: 4,
+        m: [1, 6]
     },
     button: {
         color: 'background.paper',
         p: 1,
         m: 4
     },
-    gridHeaders: {
-
+    grid: {
+        p: 1
     }
 };
 export { Dashboard };

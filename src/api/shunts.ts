@@ -3,7 +3,7 @@ import { API_BASE_URL } from "../config";
 
 
 
-const mockDashboardData: DashboardData[] = Array.from({ length: 5 }, (_, i) => ({
+const mockDashboardData: DashboardData[] = Array.from({ length: 26 }, (_, i) => ({
   user: {
     patientId: `U00${i}`,
     patientFirstName: `First${i}`,
