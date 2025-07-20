@@ -1,14 +1,14 @@
 {
-    "dashboard": {
-        "title": "Dashboard",
-        "subheader": "View data here",
-        "login": "Login"
-    },
-    "add_entry": {
-        "button": "Add New Shunt Entry"
-    },
-    "edit": {
-        "edit_button": "Edit"
-    },
-    "alerts": {}
+  "dashboard": {
+    "title": "Dashboard",
+    "subheader": "View data here",
+    "login": "Login"
+  },
+  "add_entry": {
+    "button": "Add New Shunt Entry"
+  },
+  "edit": {
+    "edit_button": "Edit"
+  },
+  "alerts": {}
 }

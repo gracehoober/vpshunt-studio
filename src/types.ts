@@ -1,4 +1,3 @@
-
 export type User = {
   patientFirstName: string;
   patientLastName: string;
@@ -11,11 +10,11 @@ export type Shunt = {
   shuntSerialId: string;
   shuntPlacementDate: Date | null;
   shuntRemovalDate: Date | null;
-  isActive: boolean
+  isActive: boolean;
 };
 
 export type DashboardData = {
   user: User;
-  activeShunt: Shunt | null,
+  activeShunt: Shunt | null;
   shuntHistory: Shunt[];
 };
