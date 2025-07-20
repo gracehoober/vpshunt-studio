@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { NewShuntEntry } from "./NewShuntEntryForm";
+import { NewShuntEntry } from "../NewEntryForm/NewShuntEntryForm";
 
 interface NewEntryProps {
   open: boolean;

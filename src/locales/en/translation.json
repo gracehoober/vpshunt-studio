@@ -1,4 +1,7 @@
 {
+  "title": {
+    "text": "VP Shunt Studio"
+  },
   "dashboard": {
     "title": "Dashboard",
     "subheader": "View data here",

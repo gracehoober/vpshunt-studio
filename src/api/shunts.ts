@@ -1,5 +1,5 @@
-import type { DashboardData } from "../types";
-import { API_BASE_URL } from "../config";
+import type { DashboardData } from "../components/dashboard/types";
+import { API_BASE_URL } from "../constant";
 
 const mockDashboardData: DashboardData[] = Array.from(
   { length: 26 },
