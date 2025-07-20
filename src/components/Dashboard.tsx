@@ -6,7 +6,18 @@ import React from "react";
 import { useEffect } from "react";
 import { fetchUserShuntData } from "../api/shunts";
 import type { DashboardData } from "../types";
+import { DataGrid, } from "@mui/x-data-grid";
+import type { GridColDef } from "@mui/x-data-grid";
 
+const columns: GridColDef[] = [
+    { field: 'patientID', headerName: 'Patient ID', width: 90 },
+    { field: 'patientFirstName', headerName: 'First Name', width: 140 },
+    { field: 'patientLastName', headerName: 'Last Name', width: 140 },
+    { field: 'patientDOB', headerName: 'Date of birth', width: 140 },
+    { field: 'shuntModel', headerName: 'Active Shunt Model', width: 140 },
+    { field: 'shuntSerialID', headerName: 'Shunt Serial Number', width: 160 },
+    { field: 'shuntPlacementDate', headerName: 'Shunt Placement Date', width: 160 },
+];
 
 const Dashboard: React.FC = () => {
     const [isNewEntryOpen, setIsNewEntryOpen] = useState(false);
@@ -20,88 +31,45 @@ const Dashboard: React.FC = () => {
                 console.log('useEffect ran');
             });
     };
-    const headers = dashboardData.length > 0 ? Object.keys(dashboardData[0]) : [];
-    const displayData = dashboardData.length > 0 ? dashboardData : [];
 
     useEffect(() => fetchDashboardData(), []);
+    const displayData = dashboardData.length > 0 ? dashboardData : [];
+    const rows = displayData.map((entry, id) => ({
+        id: id,
+        patientID: entry.user.patientId,
+        patientFirstName: entry.user.patientFirstName,
+        patientLastName: entry.user.patientLastName,
+        patientDOB: entry.user.patientDOB?.toLocaleDateString(),
+        shuntModel: entry.activeShunt?.shuntModel || "No active shunt recorded.",
+        shuntSerialID: entry.activeShunt?.shuntSerialId,
+        shuntPlacementDate: entry.activeShunt?.shuntPlacementDate?.toLocaleDateString(),
+    }));
 
     return (
-        <Box sx={styles.container}>
-            <NavBar />
-            {/* <Grid container rowSpacing={1} columnSpacing={1}>
-                {headers.map((key) => (
-                    <Grid key={key}>
-                        {key}
-                    </Grid>
-                ))}
-                {displayData.map(()=>(
-                    <Grid></Grid>
-                ))}
-            </Grid> */}
-
-            <Grid container spacing={2}>
-                {dashboardData.map((entry, idx) => (
-                    <Grid key={idx}>
-                        <Paper elevation={3}>
-                            {/* User Info */}
-                            <Typography variant="h6">
-                                {entry.user.patientFirstName} {entry.user.patientLastName}
-                            </Typography>
-                            <Typography variant="body2">
-                                ID: {entry.user.patientId} — DOB: {entry.user.patientDOB?.toLocaleDateString()}
-                            </Typography>
-
-                            {/* Active Shunt */}
-                            <Box mt={2}>
-                                <Typography variant="subtitle1">Active Shunt</Typography>
-                                {entry.activeShunt ? (
-                                    <Grid container spacing={1}>
-                                        <Grid >Model: {entry.activeShunt.shuntModel}</Grid>
-                                        <Grid >Serial: {entry.activeShunt.shuntSerialId}</Grid>
-                                        <Grid >
-                                            Placed: {entry.activeShunt.shuntPlacementDate?.toLocaleDateString()}
-                                        </Grid>
-                                    </Grid>
-                                ) : (
-                                    <Typography variant="body2" color="text.secondary">No active shunt</Typography>
-                                )}
-                            </Box>
-
-                            {/* Shunt History */}
-                            <Box mt={2}>
-                                <Typography variant="subtitle1">Shunt History</Typography>
-                                {entry.shuntHistory.length > 0 ? (
-                                    entry.shuntHistory.map((shunt, i) => (
-                                        <Grid container spacing={1} key={i} sx={{ mb: 1 }}>
-                                            <Grid >Model: {shunt.shuntModel}</Grid>
-                                            <Grid >Removed: {shunt.shuntRemovalDate?.toLocaleDateString()}</Grid>
-                                            <Grid >Serial: {shunt.shuntSerialId}</Grid>
-                                        </Grid>
-                                    ))
-                                ) : (
-                                    <Typography variant="body2" color="text.secondary">No previous shunts</Typography>
-                                )}
-                            </Box>
-                        </Paper>
-                    </Grid>
-                ))}
-            </Grid>
-
+        <Box sx={styles.box}>
+            <DataGrid
+                columns={columns}
+                rows={rows}
+                checkboxSelection
+                disableRowSelectionOnClick>
+            </DataGrid>
             <Button
                 variant="contained"
                 sx={styles.button}
                 onClick={() => setIsNewEntryOpen(true)}>
                 Add new entry
             </Button>
-            {isNewEntryOpen && <NewEntry
-                open={isNewEntryOpen}
-                onClose={() => setIsNewEntryOpen(false)} />}
+            {isNewEntryOpen &&
+                <NewEntry
+                    open={isNewEntryOpen}
+                    onClose={() => setIsNewEntryOpen(false)} />
+            }
         </Box>
     );
 };
 
 const styles = {
-    container: {
+    box: {
         backgroundColor: 'background.dashboard',
         width: '100vw',
         height: '100vh',
