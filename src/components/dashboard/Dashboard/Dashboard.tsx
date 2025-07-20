@@ -1,10 +1,10 @@
-import { NavBar } from "./NavBar";
+import { NavBar } from "../../navBar/NavBar";
 import { Button, Box } from "@mui/material";
 import { useState } from "react";
-import { NewEntry } from "./NewEntry";
+import { NewEntry } from "../NewEntry/NewEntry";
 import React from "react";
 import { useEffect } from "react";
-import { fetchUserShuntData } from "../api/shunts";
+import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
 import { DataGrid } from "@mui/x-data-grid";
 import type { GridColDef } from "@mui/x-data-grid";
