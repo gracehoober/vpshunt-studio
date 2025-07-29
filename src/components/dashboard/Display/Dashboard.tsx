@@ -80,15 +80,21 @@ const styles = {
   box: {
     width: "100vw",
     height: "100vh",
+    display: "flex",
+    flexDirection: "column",
     backgroundColor: "background.paper",
+    pt: "64px",
   },
   grid: {
+    flexGrow: 1,
+    mx: 6,
+    my: 1,
     color: "background.default",
     text: "text.secondary",
     backgroundColor: "background.paper",
-    m: [1, 6],
   },
   button: {
+    alignSelf: "flex-end",
     p: 1,
     m: 4,
   },

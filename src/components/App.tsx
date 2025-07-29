@@ -1,4 +1,4 @@
-import { Dashboard } from "./dashboard/Dashboard/Dashboard";
+import { Dashboard } from "./dashboard/Display/Dashboard.tsx";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router";
 import theme from "../themes/theme.ts";
@@ -9,7 +9,7 @@ import { NavBar } from "./navBar/NavBar.tsx";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <NavBar />
+      <NavBar sx={styles.navbar} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,5 +21,7 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
+const styles = {
+  navbar: {},
+};
 export default App;
