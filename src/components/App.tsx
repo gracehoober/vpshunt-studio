@@ -9,7 +9,7 @@ import { NavBar } from "./navBar/NavBar.tsx";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <NavBar sx={styles.navbar} />
+      <NavBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,7 +21,5 @@ const App = () => {
     </ThemeProvider>
   );
 };
-const styles = {
-  navbar: {},
-};
+
 export default App;
