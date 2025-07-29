@@ -4,10 +4,12 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import theme from "../themes/theme.ts";
 import { ImageLibrary } from "./imageLibrary/ImageLibrary.tsx";
 import { Home } from "./home/Home.tsx";
+import { NavBar } from "./navBar/NavBar.tsx";
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <NavBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -18,6 +20,6 @@ function App() {
       </BrowserRouter>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

@@ -1,4 +1,3 @@
-import { NavBar } from "../../navBar/NavBar";
 import { Button, Box } from "@mui/material";
 import { useState } from "react";
 import { NewEntry } from "../NewEntry/NewEntry";
@@ -51,32 +50,29 @@ const Dashboard: React.FC = () => {
   }));
 
   return (
-    <>
-      <NavBar />
-      <Box sx={styles.box}>
-        <DataGrid
-          columns={columns}
-          rows={rows}
-          pagination
-          checkboxSelection
-          disableRowSelectionOnClick
-          sx={styles.grid}
-        ></DataGrid>
-        <Button
-          variant="contained"
-          sx={styles.button}
-          onClick={() => setIsNewEntryOpen(true)}
-        >
-          Add new entry
-        </Button>
-        {isNewEntryOpen && (
-          <NewEntry
-            open={isNewEntryOpen}
-            onClose={() => setIsNewEntryOpen(false)}
-          />
-        )}
-      </Box>
-    </>
+    <Box sx={styles.box}>
+      <DataGrid
+        columns={columns}
+        rows={rows}
+        pagination
+        checkboxSelection
+        disableRowSelectionOnClick
+        sx={styles.grid}
+      ></DataGrid>
+      <Button
+        variant="contained"
+        sx={styles.button}
+        onClick={() => setIsNewEntryOpen(true)}
+      >
+        Add new entry
+      </Button>
+      {isNewEntryOpen && (
+        <NewEntry
+          open={isNewEntryOpen}
+          onClose={() => setIsNewEntryOpen(false)}
+        />
+      )}
+    </Box>
   );
 };
 
