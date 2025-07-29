@@ -1,4 +1,3 @@
-import { NavBar } from "../../navBar/NavBar";
 import { Button, Box } from "@mui/material";
 import { useState } from "react";
 import { NewEntry } from "../NewEntry/NewEntry";
@@ -51,49 +50,53 @@ const Dashboard: React.FC = () => {
   }));
 
   return (
-    <>
-      <NavBar />
-      <Box sx={styles.box}>
-        <DataGrid
-          columns={columns}
-          rows={rows}
-          pagination
-          checkboxSelection
-          disableRowSelectionOnClick
-          sx={styles.grid}
-        ></DataGrid>
-        <Button
-          variant="contained"
-          sx={styles.button}
-          onClick={() => setIsNewEntryOpen(true)}
-        >
-          Add new entry
-        </Button>
-        {isNewEntryOpen && (
-          <NewEntry
-            open={isNewEntryOpen}
-            onClose={() => setIsNewEntryOpen(false)}
-          />
-        )}
-      </Box>
-    </>
+    <Box sx={styles.box}>
+      <DataGrid
+        columns={columns}
+        rows={rows}
+        pagination
+        checkboxSelection
+        disableRowSelectionOnClick
+        sx={styles.grid}
+      ></DataGrid>
+      <Button
+        variant="contained"
+        sx={styles.button}
+        onClick={() => setIsNewEntryOpen(true)}
+      >
+        Add new entry
+      </Button>
+      {isNewEntryOpen && (
+        <NewEntry
+          open={isNewEntryOpen}
+          onClose={() => setIsNewEntryOpen(false)}
+        />
+      )}
+    </Box>
   );
 };
 
 const styles = {
   box: {
-    backgroundColor: "background.dashboard",
     width: "100vw",
     height: "100vh",
-    m: [1, 6],
-  },
-  button: {
-    color: "background.paper",
-    p: 1,
-    m: 4,
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "background.paper",
+    pt: "64px",
   },
   grid: {
+    flexGrow: 1,
+    mx: 6,
+    my: 1,
+    color: "background.default",
+    text: "text.secondary",
+    backgroundColor: "background.paper",
+  },
+  button: {
+    alignSelf: "flex-end",
     p: 1,
+    m: 4,
   },
 };
 export { Dashboard };
