@@ -78,18 +78,19 @@ const Dashboard: React.FC = () => {
 
 const styles = {
   box: {
-    backgroundColor: "background.dashboard",
     width: "100vw",
     height: "100vh",
+    backgroundColor: "background.paper",
+  },
+  grid: {
+    color: "background.default",
+    text: "text.secondary",
+    backgroundColor: "background.paper",
     m: [1, 6],
   },
   button: {
-    color: "background.paper",
     p: 1,
     m: 4,
-  },
-  grid: {
-    p: 1,
   },
 };
 export { Dashboard };
