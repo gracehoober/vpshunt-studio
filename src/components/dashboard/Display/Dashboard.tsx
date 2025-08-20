@@ -5,24 +5,50 @@ import React from "react";
 import { useEffect } from "react";
 import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
-import { DataGrid } from "@mui/x-data-grid";
 import type { GridColDef } from "@mui/x-data-grid";
+import { StyledDashboardGrid } from "./StyledDashboardGrid";
+import { useTranslation } from "react-i18next";
 
 const columns: GridColDef[] = [
-  { field: "patientID", headerName: "Patient ID", width: 90 },
-  { field: "patientFirstName", headerName: "First Name", width: 140 },
-  { field: "patientLastName", headerName: "Last Name", width: 140 },
-  { field: "patientDOB", headerName: "Date of birth", width: 140 },
-  { field: "shuntModel", headerName: "Active Shunt Model", width: 140 },
-  { field: "shuntSerialID", headerName: "Shunt Serial Number", width: 160 },
+  {
+    field: "patientID",
+    headerName: "Patient ID",
+    width: 90,
+  },
+  {
+    field: "patientFirstName",
+    headerName: "First Name",
+    width: 140,
+  },
+  {
+    field: "patientLastName",
+    headerName: "Last Name",
+    width: 140,
+  },
+  {
+    field: "patientDOB",
+    headerName: "Date of birth",
+    width: 140,
+  },
+  {
+    field: "shuntModel",
+    headerName: "Active Model",
+    width: 140,
+  },
+  {
+    field: "shuntSerialID",
+    headerName: "Serial Number",
+    width: 160,
+  },
   {
     field: "shuntPlacementDate",
-    headerName: "Shunt Placement Date",
+    headerName: "Placement Date",
     width: 160,
   },
 ];
 
 const Dashboard: React.FC = () => {
+  const { t } = useTranslation();
   const [isNewEntryOpen, setIsNewEntryOpen] = useState(false);
   const [dashboardData, setDashboardData] = useState<DashboardData[]>([]);
 
@@ -51,20 +77,19 @@ const Dashboard: React.FC = () => {
 
   return (
     <Box sx={styles.box}>
-      <DataGrid
+      <StyledDashboardGrid
         columns={columns}
         rows={rows}
         pagination
         checkboxSelection
         disableRowSelectionOnClick
-        sx={styles.grid}
-      ></DataGrid>
+      ></StyledDashboardGrid>
       <Button
         variant="contained"
         sx={styles.button}
         onClick={() => setIsNewEntryOpen(true)}
       >
-        Add new entry
+        {t("addEntry.button")}
       </Button>
       {isNewEntryOpen && (
         <NewEntry
@@ -84,14 +109,6 @@ const styles = {
     flexDirection: "column",
     backgroundColor: "background.paper",
     pt: "64px",
-  },
-  grid: {
-    flexGrow: 1,
-    mx: 6,
-    my: 1,
-    color: "background.default",
-    text: "text.secondary",
-    backgroundColor: "background.paper",
   },
   button: {
     alignSelf: "flex-end",

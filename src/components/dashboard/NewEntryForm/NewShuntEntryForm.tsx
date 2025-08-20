@@ -6,12 +6,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { TextField, Button, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { NewShuntEntrySchema } from "../schemas/NewShuntEntrySchema";
 import type { NewShuntEntrySchemaType } from "../schemas/NewShuntEntrySchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const NewShuntEntry: React.FC = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -101,7 +103,7 @@ const NewShuntEntry: React.FC = () => {
         helperText={errors.shuntSerialID?.message}
       />
       <Button type="submit" sx={styles.button} variant="contained">
-        Add Entry
+        {t("addEntry.add")}
       </Button>
     </Stack>
   );
