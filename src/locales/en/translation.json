@@ -2,6 +2,11 @@
   "title": {
     "text": "VP Shunt Studio"
   },
+  "navBar": {
+    "elements": {
+      "profile": "Profile/name"
+    }
+  },
   "dashboard": {
     "title": "Dashboard",
     "subheader": "View data here",
@@ -11,11 +16,15 @@
     "button": "Add New Shunt Entry",
     "add": "Add Entry"
   },
-  "edit": {
-    "edit_button": "Edit"
-  },
   "home": {
     "title": "Welcome",
     "toDashboard": "My Dashboard"
+  },
+  "patient": {
+    "title": "Patient",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "id": "ID",
+    "dateOfBirth": "Date of Birth"
   }
 }

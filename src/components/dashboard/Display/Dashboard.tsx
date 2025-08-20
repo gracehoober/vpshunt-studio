@@ -7,6 +7,7 @@ import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
 import type { GridColDef } from "@mui/x-data-grid";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
+import { useTranslation } from "react-i18next";
 
 const columns: GridColDef[] = [
   {
@@ -47,6 +48,7 @@ const columns: GridColDef[] = [
 ];
 
 const Dashboard: React.FC = () => {
+  const { t } = useTranslation();
   const [isNewEntryOpen, setIsNewEntryOpen] = useState(false);
   const [dashboardData, setDashboardData] = useState<DashboardData[]>([]);
 
@@ -87,7 +89,7 @@ const Dashboard: React.FC = () => {
         sx={styles.button}
         onClick={() => setIsNewEntryOpen(true)}
       >
-        Add new entry
+        {t("addEntry.button")}
       </Button>
       {isNewEntryOpen && (
         <NewEntry
@@ -108,16 +110,6 @@ const styles = {
     backgroundColor: "background.paper",
     pt: "64px",
   },
-  // grid: {
-  //   flexGrow: 1,
-  //   mx: 6,
-  //   my: 1,
-  //   color: "background.default",
-  //   text: "text.secondary",
-  //   backgroundColor: "background.paper",
-  //   "& .MuiDataGrid-row:hover": {
-  //     color: "text.primary",
-  //   },
   button: {
     alignSelf: "flex-end",
     p: 1,
