@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { NewShuntEntry } from "../NewEntryForm/NewShuntEntryForm";
+import { useTranslation } from "react-i18next";
 
 interface NewEntryProps {
   open: boolean;
@@ -9,6 +10,7 @@ interface NewEntryProps {
 }
 
 const NewEntry: React.FC<NewEntryProps> = ({ open, onClose }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Modal open={open} onClose={onClose} sx={styles.modal}>
@@ -27,7 +29,7 @@ const NewEntry: React.FC<NewEntryProps> = ({ open, onClose }) => {
               component="h2"
               align="center"
             >
-              Add Shunt Entry
+              {t("addEntry.button")}
             </Typography>
           </Box>
           <NewShuntEntry />
@@ -57,7 +59,6 @@ const styles = {
     mb: 2,
   },
   title: {
-    color: "primary.main",
     m: 2,
   },
   closeButton: {

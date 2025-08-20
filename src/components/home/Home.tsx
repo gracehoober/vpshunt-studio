@@ -1,7 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const toDashboard = () => {
     navigate("/dashboard");
@@ -9,10 +11,10 @@ const Home = () => {
   return (
     <Box sx={styles.box}>
       <Typography sx={styles.title} variant="h1" align="center">
-        Welcome
+        {t("home.title")}
       </Typography>
       <Button sx={styles.dashButton} onClick={toDashboard} variant="contained">
-        My Dashboard
+        {t("home.toDashboard")}
       </Button>
     </Box>
   );
@@ -36,4 +38,5 @@ const styles = {
     m: 4,
   },
 };
+
 export { Home };

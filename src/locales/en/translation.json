@@ -7,11 +7,15 @@
     "subheader": "View data here",
     "login": "Login"
   },
-  "add_entry": {
-    "button": "Add New Shunt Entry"
+  "addEntry": {
+    "button": "Add New Shunt Entry",
+    "add": "Add Entry"
   },
   "edit": {
     "edit_button": "Edit"
   },
-  "alerts": {}
+  "home": {
+    "title": "Welcome",
+    "toDashboard": "My Dashboard"
+  }
 }
