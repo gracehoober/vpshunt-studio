@@ -8,44 +8,7 @@ import type { DashboardData } from "../types";
 import type { GridColDef } from "@mui/x-data-grid";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
 import { useTranslation } from "react-i18next";
-
-const columns: GridColDef[] = [
-  {
-    field: "patientID",
-    headerName: "Patient ID",
-    width: 90,
-  },
-  {
-    field: "patientFirstName",
-    headerName: "First Name",
-    width: 140,
-  },
-  {
-    field: "patientLastName",
-    headerName: "Last Name",
-    width: 140,
-  },
-  {
-    field: "patientDOB",
-    headerName: "Date of birth",
-    width: 140,
-  },
-  {
-    field: "shuntModel",
-    headerName: "Active Model",
-    width: 140,
-  },
-  {
-    field: "shuntSerialID",
-    headerName: "Serial Number",
-    width: 160,
-  },
-  {
-    field: "shuntPlacementDate",
-    headerName: "Placement Date",
-    width: 160,
-  },
-];
+import { computeTextWidth } from "../utils";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -74,6 +37,64 @@ const Dashboard: React.FC = () => {
     shuntPlacementDate:
       entry.activeShunt?.shuntPlacementDate?.toLocaleDateString(),
   }));
+  const columns: GridColDef[] = [
+    {
+      field: "patientID",
+      headerName: "Patient ID",
+      width: Math.max(
+        computeTextWidth("Patient ID") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "patientFirstName",
+      headerName: "First Name",
+      width: Math.max(
+        computeTextWidth("First Name") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "patientLastName",
+      headerName: "Last Name",
+      width: Math.max(
+        computeTextWidth("Last Name") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "patientDOB",
+      headerName: "Date of birth",
+      width: Math.max(
+        computeTextWidth("Date of birth") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "shuntModel",
+      headerName: "Active Model",
+      width: Math.max(
+        computeTextWidth("Active Model") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "shuntSerialID",
+      headerName: "Serial Number",
+      width: Math.max(
+        computeTextWidth("Serial Number") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+    {
+      field: "shuntPlacementDate",
+      headerName: "Placement Date",
+      width: Math.max(
+        computeTextWidth("Placement Date") + 32, // header
+        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+      ),
+    },
+  ];
 
   return (
     <Box sx={styles.box}>
@@ -103,8 +124,8 @@ const Dashboard: React.FC = () => {
 
 const styles = {
   box: {
-    width: "100vw",
-    height: "100vh",
+    overflowX: "auto",
+    maxWidth: "100%",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "background.paper",
