@@ -6,11 +6,11 @@ export type User = {
 };
 
 export type Shunt = {
-  shuntModel: string;
-  shuntSerialId: string;
-  shuntPlacementDate: Date | null;
-  shuntRemovalDate: Date | null;
-  isActive: boolean;
+  shuntModel?: string;
+  shuntSerialId?: string;
+  shuntPlacementDate?: Date | null;
+  shuntRemovalDate?: Date | null;
+  isActive?: boolean;
 };
 
 export type DashboardData = {
@@ -18,3 +18,5 @@ export type DashboardData = {
   activeShunt: Shunt | null;
   shuntHistory: Shunt[];
 };
+
+export type Rows = Array<User & Shunt>;

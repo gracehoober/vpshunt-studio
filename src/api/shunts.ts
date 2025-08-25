@@ -1,5 +1,5 @@
 import type { DashboardData } from "../components/dashboard/types";
-import { API_BASE_URL } from "../constant";
+// import { API_BASE_URL } from "../constant";
 
 const mockDashboardData: DashboardData[] = Array.from(
   { length: 26 },
@@ -23,7 +23,7 @@ const mockDashboardData: DashboardData[] = Array.from(
         shuntSerialId: `SN-${900 + i}`,
         shuntPlacementDate: new Date(2022, 0, i + 1),
         shuntRemovalDate: new Date(2022, 11, i + 1),
-        isActive: false,
+        isActive: true,
       },
     ],
   }),

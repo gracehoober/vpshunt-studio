@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
 import type { GridColDef } from "@mui/x-data-grid";
+import type { Rows } from "../types";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
 import { useTranslation } from "react-i18next";
 import { computeTextWidth } from "../utils";
@@ -14,7 +15,6 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const [isNewEntryOpen, setIsNewEntryOpen] = useState(false);
   const [dashboardData, setDashboardData] = useState<DashboardData[]>([]);
-
   const fetchDashboardData = () => {
     fetchUserShuntData()
       .then((data) => setDashboardData(data))
@@ -25,18 +25,13 @@ const Dashboard: React.FC = () => {
   };
 
   useEffect(() => fetchDashboardData(), []);
+
   const displayData = dashboardData.length > 0 ? dashboardData : [];
-  const rows = displayData.map((entry, id) => ({
-    id: id,
-    patientID: entry.user.patientId,
-    patientFirstName: entry.user.patientFirstName,
-    patientLastName: entry.user.patientLastName,
-    patientDOB: entry.user.patientDOB?.toLocaleDateString(),
-    shuntModel: entry.activeShunt?.shuntModel || "No active shunt recorded.",
-    shuntSerialID: entry.activeShunt?.shuntSerialId,
-    shuntPlacementDate:
-      entry.activeShunt?.shuntPlacementDate?.toLocaleDateString(),
+  const rows: Rows = displayData.map(({ user, activeShunt }) => ({
+    ...user,
+    ...activeShunt,
   }));
+
   const columns: GridColDef[] = [
     {
       field: "patientID",
@@ -73,10 +68,7 @@ const Dashboard: React.FC = () => {
     {
       field: "shuntModel",
       headerName: "Active Model",
-      width: Math.max(
-        computeTextWidth("Active Model") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-      ),
+      width:
     },
     {
       field: "shuntSerialID",
@@ -98,13 +90,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <Box sx={styles.box}>
-      <StyledDashboardGrid
-        columns={columns}
-        rows={rows}
-        pagination
-        checkboxSelection
-        disableRowSelectionOnClick
-      ></StyledDashboardGrid>
       <Button
         variant="contained"
         sx={styles.button}
@@ -112,6 +97,13 @@ const Dashboard: React.FC = () => {
       >
         {t("addEntry.button")}
       </Button>
+      <StyledDashboardGrid
+        columns={columns}
+        rows={rows}
+        pagination
+        checkboxSelection
+        disableRowSelectionOnClick
+      ></StyledDashboardGrid>
       {isNewEntryOpen && (
         <NewEntry
           open={isNewEntryOpen}
