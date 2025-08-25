@@ -27,14 +27,15 @@ const Dashboard: React.FC = () => {
   useEffect(() => fetchDashboardData(), []);
 
   const displayData = dashboardData.length > 0 ? dashboardData : [];
-  const rows: Rows = displayData.map(({ user, activeShunt }) => ({
+  const rows: Rows = displayData.map(({ user, activeShunt }, id) => ({
+    id: id,
     ...user,
     ...activeShunt,
   }));
 
   const columns: GridColDef[] = [
     {
-      field: "patientID",
+      field: "patientId",
       headerName: "Patient ID",
       width: Math.max(
         computeTextWidth("Patient ID") + 32, // header
@@ -68,14 +69,19 @@ const Dashboard: React.FC = () => {
     {
       field: "shuntModel",
       headerName: "Active Model",
-      width:
+      width: Math.max(
+        computeTextWidth("Active Model") + 32, // header
+        ...rows.map(
+          (r) => computeTextWidth(r.shuntModel + 32), // padding
+        ),
+      ),
     },
     {
-      field: "shuntSerialID",
+      field: "shuntSerialId",
       headerName: "Serial Number",
       width: Math.max(
         computeTextWidth("Serial Number") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+        ...rows.map((r) => computeTextWidth(r.shuntSerialId) + 32), // padding
       ),
     },
     {
@@ -83,7 +89,7 @@ const Dashboard: React.FC = () => {
       headerName: "Placement Date",
       width: Math.max(
         computeTextWidth("Placement Date") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
+        ...rows.map((r) => computeTextWidth(r.shuntPlacementDate) + 32), // padding
       ),
     },
   ];
