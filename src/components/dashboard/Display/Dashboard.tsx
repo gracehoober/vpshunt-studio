@@ -6,10 +6,10 @@ import { useEffect } from "react";
 import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
 import type { GridColDef } from "@mui/x-data-grid";
+import { createColumns } from "../utils";
 import type { Rows } from "../types";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
 import { useTranslation } from "react-i18next";
-import { computeTextWidth } from "../utils";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -32,67 +32,7 @@ const Dashboard: React.FC = () => {
     ...user,
     ...activeShunt,
   }));
-
-  const columns: GridColDef[] = [
-    {
-      field: "patientId",
-      headerName: "Patient ID",
-      width: Math.max(
-        computeTextWidth("Patient ID") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-      ),
-    },
-    {
-      field: "patientFirstName",
-      headerName: "First Name",
-      width: Math.max(
-        computeTextWidth("First Name") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-      ),
-    },
-    {
-      field: "patientLastName",
-      headerName: "Last Name",
-      width: Math.max(
-        computeTextWidth("Last Name") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-      ),
-    },
-    {
-      field: "patientDOB",
-      headerName: "Date of birth",
-      width: Math.max(
-        computeTextWidth("Date of birth") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-      ),
-    },
-    {
-      field: "shuntModel",
-      headerName: "Active Model",
-      width: Math.max(
-        computeTextWidth("Active Model") + 32, // header
-        ...rows.map(
-          (r) => computeTextWidth(r.shuntModel + 32), // padding
-        ),
-      ),
-    },
-    {
-      field: "shuntSerialId",
-      headerName: "Serial Number",
-      width: Math.max(
-        computeTextWidth("Serial Number") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.shuntSerialId) + 32), // padding
-      ),
-    },
-    {
-      field: "shuntPlacementDate",
-      headerName: "Placement Date",
-      width: Math.max(
-        computeTextWidth("Placement Date") + 32, // header
-        ...rows.map((r) => computeTextWidth(r.shuntPlacementDate) + 32), // padding
-      ),
-    },
-  ];
+  const columns: GridColDef = createColumns(rows);
 
   return (
     <Box sx={styles.box}>
