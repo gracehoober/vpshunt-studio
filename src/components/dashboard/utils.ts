@@ -12,7 +12,7 @@ function computeTextWidth(text: string, font = "14px Roboto"): number {
 function createColumns(rows: Rows): GridColDef[] {
   if (!rows.length) return [];
 
-  const fields = Object.keys(rows[0]);
+  const fields = Object.keys(rows[0]).filter((f) => f !== "id");
   return fields.map((fieldName) => {
     const field = fieldName;
     const headerName = humanizeColHeader(fieldName);
@@ -27,18 +27,11 @@ function createColumns(rows: Rows): GridColDef[] {
 }
 
 function humanizeColHeader(keyName: string): string {
-  const humanize = keyName;
+  const humanize = keyName
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (c) => c.toUpperCase())
+    .trim();
   return humanize;
 }
-
-// const columns: GridColDef[] = [
-//   {
-//     field: "patientId",
-//     headerName: "Patient ID",
-//     width: Math.max(
-//       computeTextWidth("Patient ID") + 32, // header
-//       ...rows.map((r) => computeTextWidth(r.patientFirstName) + 32), // padding
-//     ),
-//   },
 
 export { computeTextWidth, createColumns };

@@ -5,7 +5,6 @@ import React from "react";
 import { useEffect } from "react";
 import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
-import type { GridColDef } from "@mui/x-data-grid";
 import { createColumns } from "../utils";
 import type { Rows } from "../types";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
@@ -32,7 +31,7 @@ const Dashboard: React.FC = () => {
     ...user,
     ...activeShunt,
   }));
-  const columns: GridColDef = createColumns(rows);
+  const columns = createColumns(rows);
 
   return (
     <Box sx={styles.box}>
