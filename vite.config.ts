@@ -7,5 +7,9 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "./src/setupTests.js",
+    // Mock CSS imports
+    alias: {
+      "^.+\\.(css|scss)$": "./__mocks__/styleMock.js",
+    },
   },
 } as import("vitest/config").ViteUserConfig);
