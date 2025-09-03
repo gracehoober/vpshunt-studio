@@ -69,7 +69,7 @@ const styles = {
     pt: "64px",
   },
   button: {
-    alignSelf: "flex-end",
+    alignSelf: "flex-center",
     p: 1,
     m: 4,
   },
