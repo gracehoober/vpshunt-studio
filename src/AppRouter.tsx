@@ -6,12 +6,14 @@ import { Dashboard } from "./components/dashboard/Display/Dashboard.tsx";
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/imaging-library" element={<ImageLibrary />} />
-        <Route path="/*" element={<Home />} />
-      </Routes>
+      <div data-testid="router">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/imaging-library" element={<ImageLibrary />} />
+          <Route path="/*" element={<Home />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 };
