@@ -6,6 +6,6 @@ describe("<App>", () => {
   it("renders successfully", () => {
     render(<App />);
 
-    expect(window.location.href).toBe("http://localhost:5173/");
+    expect(window.location.href).toBe("http://localhost:3000/");
   });
 });

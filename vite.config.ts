@@ -7,9 +7,10 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "./src/setupTests.js",
-    // Mock CSS imports
-    alias: {
-      "^.+\\.(css|scss)$": "./__mocks__/styleMock.js",
+    server: {
+      deps: {
+        inline: ["@mui/x-data-grid"],
+      },
     },
   },
-} as import("vitest/config").ViteUserConfig);
+});
