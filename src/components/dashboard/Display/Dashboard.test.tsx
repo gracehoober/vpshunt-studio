@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { findByLabelText, render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { waitFor } from "@testing-library/react";
 
@@ -42,10 +42,12 @@ describe("<App>", () => {
   });
 
   it("closes NewEntry modal on close button click", async () => {
-    const { getByText, queryByLabelText, findByTestId } = render(<Dashboard />);
+    const { getByText, queryByLabelText, findByLabelText } = render(
+      <Dashboard />,
+    );
     const button = getByText("addEntry.button");
     button.click();
-    const closeButton = await findByTestId("close-modal-button");
+    const closeButton = await findByLabelText("close");
     expect(queryByLabelText("close")).toBeInTheDocument();
     closeButton.click();
     await waitFor(() => {
