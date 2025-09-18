@@ -12,7 +12,7 @@ import { NewShuntEntrySchema } from "../schemas/NewShuntEntrySchema";
 import type { NewShuntEntrySchemaType } from "../schemas/NewShuntEntrySchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const NewShuntEntry: React.FC = () => {
+const NewShuntEntryForm: React.FC = () => {
   const { t } = useTranslation();
   const {
     register,
@@ -124,4 +124,4 @@ const styles = {
   },
 };
 
-export { NewShuntEntry };
+export { NewShuntEntryForm };
