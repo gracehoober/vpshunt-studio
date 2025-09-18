@@ -21,7 +21,13 @@ describe("<App>", () => {
     expect(formInBody).toBeInTheDocument();
   });
 
-  it("Add new entry form contains expected input fields", () => {
+  it("does not contain a form element when modal is closed", () => {
+    render(<NewEntry onClose={() => false} open={false} />);
+    const formInBody = document.body.querySelector("form");
+    expect(formInBody).not.toBeInTheDocument();
+  });
+
+  it("Add new entry form contains expected input fields when modal is open", () => {
     const { getByLabelText } = render(
       <NewEntry onClose={() => false} open={true} />,
     );
