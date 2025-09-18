@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { NewShuntEntry } from "../NewEntryForm/NewShuntEntryForm";
+import { NewShuntEntryForm } from "../NewEntryForm/NewShuntEntryForm";
 import { useTranslation } from "react-i18next";
 
 interface NewEntryProps {
@@ -32,7 +32,7 @@ const NewEntry: React.FC<NewEntryProps> = ({ open, onClose }) => {
               {t("addEntry.button")}
             </Typography>
           </Box>
-          <NewShuntEntry />
+          <NewShuntEntryForm />
         </Box>
       </Modal>
     </>
