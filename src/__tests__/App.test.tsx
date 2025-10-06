@@ -11,8 +11,8 @@ describe("<App>", () => {
 
   it("renders the NavBar", () => {
     render(<App />);
-    expect(screen.getByText("title.text")).toBeInTheDocument();
-    expect(screen.getByText("navBar.elements.profile")).toBeInTheDocument();
+    expect(screen.getByText("VP Shunt Studio")).toBeInTheDocument();
+    expect(screen.getByText("Profile/name")).toBeInTheDocument();
   });
 
   it("renders the AppRouter", () => {

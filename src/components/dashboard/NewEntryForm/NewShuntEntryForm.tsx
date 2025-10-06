@@ -26,7 +26,6 @@ const NewShuntEntryForm: React.FC = () => {
   const onSubmit: SubmitHandler<NewShuntEntrySchemaType> = (data) => {
     console.log("Submitting form: ", data);
   };
-  //TODO: form field names in translation file match the names in the schema
   return (
     <Stack
       component="form"
@@ -35,19 +34,19 @@ const NewShuntEntryForm: React.FC = () => {
       noValidate
     >
       <TextField
-        label="Patient first name"
+        label={t("forms.labels.patientFirstName")}
         {...register("patientFirstName")}
         error={!!errors.patientFirstName}
         helperText={errors.patientFirstName?.message}
       />
       <TextField
-        label="Patient last name"
+        label={t("forms.labels.patientLastName")}
         {...register("patientLastName")}
         error={!!errors.patientLastName}
         helperText={errors.patientLastName?.message}
       />
       <TextField
-        label="Patient ID"
+        label={t("forms.labels.patientId")}
         {...register("patientId")}
         error={!!errors.patientId}
         helperText={errors.patientId?.message}
@@ -58,7 +57,7 @@ const NewShuntEntryForm: React.FC = () => {
           control={control}
           render={({ field }) => (
             <DatePicker
-              label="Patient date of birth"
+              label={t("forms.labels.patientDOB")}
               {...field}
               value={field.value ?? null}
               slotProps={{
@@ -76,7 +75,7 @@ const NewShuntEntryForm: React.FC = () => {
           control={control}
           render={({ field }) => (
             <DatePicker
-              label="Shunt placement date"
+              label={t("forms.labels.shuntPlacementDate")}
               {...field}
               value={field.value ?? null}
               slotProps={{
@@ -91,13 +90,13 @@ const NewShuntEntryForm: React.FC = () => {
         />
       </LocalizationProvider>
       <TextField
-        label="Shunt model"
+        label={t("forms.labels.shuntModel")}
         {...register("shuntModel")}
         error={!!errors.shuntModel}
         helperText={errors.shuntModel?.message}
       />
       <TextField
-        label="Shunt Serial ID"
+        label={t("forms.labels.shuntSerialId")}
         {...register("shuntSerialID")}
         error={!!errors.shuntSerialID}
         helperText={errors.shuntSerialID?.message}

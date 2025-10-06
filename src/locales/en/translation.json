@@ -26,5 +26,28 @@
     "lastName": "Last Name",
     "id": "ID",
     "dateOfBirth": "Date of Birth"
+  },
+  "forms": {
+    "labels": {
+      "patientFirstName": "Patient first name",
+      "patientLastName": "Patient last name",
+      "patientId": "Patient ID",
+      "patientDOB": "Patient date of birth",
+      "shuntPlacementDate": "Shunt placement date",
+      "shuntModel": "Shunt model",
+      "shuntSerialId": "Shunt Serial ID"
+    },
+    "validation": {
+      "patientFirstName": "Patient first name is required.",
+      "patientLastName": "Patient last name is required.",
+      "patientId": "Patient ID is required.",
+      "patientDOB": "Patient date of birth is required.",
+      "shuntPlacementDate": "Placement date is required.",
+      "shuntModel": "Shunt model is required.",
+      "shuntSerialId": "Shunt ID is required."
+    }
+  },
+  "imageLibrary": {
+    "placeholder": "List of Images"
   }
 }

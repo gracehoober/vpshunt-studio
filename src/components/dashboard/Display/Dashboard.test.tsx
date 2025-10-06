@@ -17,7 +17,7 @@ describe("<App>", () => {
 
   it("contains the text 'Add Entry'", () => {
     const { getByText } = render(<Dashboard />);
-    expect(getByText("addEntry.button")).toBeInTheDocument();
+    expect(getByText("Add New Shunt Entry")).toBeInTheDocument();
   });
 
   it("contains a button element", () => {
@@ -35,7 +35,7 @@ describe("<App>", () => {
   it("opens NewEntry modal on button click", async () => {
     const user = userEvent.setup();
     const { getByText, queryByLabelText } = render(<Dashboard />);
-    const button = getByText("addEntry.button");
+    const button = getByText("Add New Shunt Entry");
     expect(queryByLabelText("close")).not.toBeInTheDocument();
     await user.click(button);
     await waitFor(() => {
@@ -48,7 +48,7 @@ describe("<App>", () => {
     const { getByText, queryByLabelText, findByLabelText } = render(
       <Dashboard />,
     );
-    const button = getByText("addEntry.button");
+    const button = getByText("Add New Shunt Entry");
     await user.click(button);
     const closeButton = await findByLabelText("close");
     expect(queryByLabelText("close")).toBeInTheDocument();

@@ -1,5 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 const ImageLibrary = () => {
-  return <p>List of Images</p>;
+  const { t } = useTranslation();
+  return <p>{t("imageLibrary.placeholder")}</p>;
 };
 
 export { ImageLibrary };

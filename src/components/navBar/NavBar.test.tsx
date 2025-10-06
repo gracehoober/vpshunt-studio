@@ -10,12 +10,12 @@ describe("<NavBar>", () => {
 
   it("renders the app title", () => {
     render(<NavBar />);
-    expect(screen.getByText("title.text")).toBeInTheDocument();
+    expect(screen.getByText("VP Shunt Studio")).toBeInTheDocument();
   });
 
   it("renders the profile text", () => {
     render(<NavBar />);
-    expect(screen.getByText("navBar.elements.profile")).toBeInTheDocument();
+    expect(screen.getByText("Profile/name")).toBeInTheDocument();
   });
 
   it("renders within an AppBar component", () => {
@@ -33,12 +33,12 @@ describe("<NavBar>", () => {
   it("displays title as h1 heading", () => {
     render(<NavBar />);
     const title = screen.getByRole("heading", { level: 1 });
-    expect(title).toHaveTextContent("title.text");
+    expect(title).toHaveTextContent("VP Shunt Studio");
   });
 
   it("displays profile text as h5 heading", () => {
     render(<NavBar />);
     const profile = screen.getByRole("heading", { level: 5 });
-    expect(profile).toHaveTextContent("navBar.elements.profile");
+    expect(profile).toHaveTextContent("Profile/name");
   });
 });

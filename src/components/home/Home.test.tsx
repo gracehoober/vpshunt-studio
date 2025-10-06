@@ -17,25 +17,25 @@ describe("<Home>", () => {
 
   it("renders the title", () => {
     render(<MockedHome />);
-    expect(screen.getByText("home.title")).toBeInTheDocument();
+    expect(screen.getByText("Welcome")).toBeInTheDocument();
   });
 
   it("renders title as h1 heading", () => {
     render(<MockedHome />);
     const title = screen.getByRole("heading", { level: 1 });
-    expect(title).toHaveTextContent("home.title");
+    expect(title).toHaveTextContent("Welcome");
   });
 
   it("renders the dashboard button", () => {
     render(<MockedHome />);
-    expect(screen.getByRole("button", { name: "home.toDashboard" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "My Dashboard" })).toBeInTheDocument();
   });
 
   it("navigates to dashboard when button is clicked", async () => {
     const user = userEvent.setup();
     render(<MockedHome />);
 
-    const button = screen.getByRole("button", { name: "home.toDashboard" });
+    const button = screen.getByRole("button", { name: "My Dashboard" });
     await user.click(button);
 
     // After navigation, URL should change to /dashboard

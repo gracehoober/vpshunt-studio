@@ -21,14 +21,14 @@ describe("<NewShuntEntryForm>", () => {
 
   it("renders submit button with correct text", () => {
     render(<NewShuntEntryForm />);
-    expect(screen.getByRole("button", { name: "addEntry.add" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Add Entry" })).toBeInTheDocument();
   });
 
   it("displays validation errors when submitting empty form", async () => {
     const user = userEvent.setup();
     render(<NewShuntEntryForm />);
 
-    const submitButton = screen.getByRole("button", { name: "addEntry.add" });
+    const submitButton = screen.getByRole("button", { name: "Add Entry" });
     await user.click(submitButton);
 
     await waitFor(() => {
@@ -46,7 +46,7 @@ describe("<NewShuntEntryForm>", () => {
     const user = userEvent.setup();
     render(<NewShuntEntryForm />);
 
-    const submitButton = screen.getByRole("button", { name: "addEntry.add" });
+    const submitButton = screen.getByRole("button", { name: "Add Entry" });
     await user.click(submitButton);
 
     await waitFor(() => {
@@ -92,7 +92,7 @@ describe("<NewShuntEntryForm>", () => {
     if (placementInput) await user.type(placementInput, "03/20/2023");
 
     // Submit
-    const submitButton = screen.getByRole("button", { name: "addEntry.add" });
+    const submitButton = screen.getByRole("button", { name: "Add Entry" });
     await user.click(submitButton);
 
     await waitFor(() => {
@@ -116,7 +116,7 @@ describe("<NewShuntEntryForm>", () => {
     render(<NewShuntEntryForm />);
 
     // Submit to trigger validation errors
-    const submitButton = screen.getByRole("button", { name: "addEntry.add" });
+    const submitButton = screen.getByRole("button", { name: "Add Entry" });
     await user.click(submitButton);
 
     await waitFor(() => {
