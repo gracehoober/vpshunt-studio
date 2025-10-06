@@ -1,6 +1,7 @@
-import { findByLabelText, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { Dashboard } from "./Dashboard";
 
@@ -32,24 +33,26 @@ describe("<App>", () => {
   });
 
   it("opens NewEntry modal on button click", async () => {
+    const user = userEvent.setup();
     const { getByText, queryByLabelText } = render(<Dashboard />);
     const button = getByText("addEntry.button");
     expect(queryByLabelText("close")).not.toBeInTheDocument();
-    button.click();
+    await user.click(button);
     await waitFor(() => {
       expect(queryByLabelText("close")).toBeInTheDocument();
     });
   });
 
   it("closes NewEntry modal on close button click", async () => {
+    const user = userEvent.setup();
     const { getByText, queryByLabelText, findByLabelText } = render(
       <Dashboard />,
     );
     const button = getByText("addEntry.button");
-    button.click();
+    await user.click(button);
     const closeButton = await findByLabelText("close");
     expect(queryByLabelText("close")).toBeInTheDocument();
-    closeButton.click();
+    await user.click(closeButton);
     await waitFor(() => {
       expect(queryByLabelText("close")).not.toBeInTheDocument();
     });

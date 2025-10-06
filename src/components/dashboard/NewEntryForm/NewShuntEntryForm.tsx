@@ -26,7 +26,7 @@ const NewShuntEntryForm: React.FC = () => {
   const onSubmit: SubmitHandler<NewShuntEntrySchemaType> = (data) => {
     console.log("Submitting form: ", data);
   };
-
+  //TODO: form field names in translation file match the names in the schema
   return (
     <Stack
       component="form"
