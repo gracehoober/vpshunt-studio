@@ -23,8 +23,9 @@ const NewShuntEntryForm: React.FC = () => {
     resolver: yupResolver(NewShuntEntrySchema),
   });
 
-  const onSubmit: SubmitHandler<NewShuntEntrySchemaType> = (data) => {
-    console.log("Submitting form: ", data);
+  const onSubmit: SubmitHandler<NewShuntEntrySchemaType> = () => {
+    // TODO: Send data to API endpoint
+    // For now, this is a placeholder - form validation is working
   };
   return (
     <Stack

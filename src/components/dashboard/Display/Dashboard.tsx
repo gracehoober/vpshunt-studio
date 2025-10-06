@@ -17,9 +17,10 @@ const Dashboard: React.FC = () => {
   const fetchDashboardData = () => {
     fetchUserShuntData()
       .then((data) => setDashboardData(data))
-      .catch((err) => console.log(err))
-      .finally(() => {
-        console.log("useEffect ran");
+      .catch((err) => {
+        // TODO: Show user-friendly error message (e.g., toast notification)
+        // For now, we'll handle this in Priority #3
+        console.error("Failed to fetch dashboard data:", err);
       });
   };
 
