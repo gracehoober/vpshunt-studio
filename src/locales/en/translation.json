@@ -10,7 +10,8 @@
   "dashboard": {
     "title": "Dashboard",
     "subheader": "View data here",
-    "login": "Login"
+    "login": "Login",
+    "error": "An error occurred while fetching data. Please check your connection and try again."
   },
   "addEntry": {
     "button": "Add New Shunt Entry",

@@ -1,4 +1,4 @@
-import { Button, Box } from "@mui/material";
+import { Button, Box, IconButton, LinearProgress, Stack } from "@mui/material";
 import { useState } from "react";
 import { NewEntry } from "../NewEntry/NewEntry";
 import React from "react";
@@ -9,17 +9,28 @@ import { createColumns } from "../utils";
 import type { Rows } from "../types";
 import { StyledDashboardGrid } from "./StyledDashboardGrid";
 import { useTranslation } from "react-i18next";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { ErrorAlert } from "../../common/ErrorAlert";
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const [isNewEntryOpen, setIsNewEntryOpen] = useState(false);
   const [dashboardData, setDashboardData] = useState<DashboardData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const fetchDashboardData = () => {
+    setLoading(true);
+    setError(null);
+
     fetchUserShuntData()
-      .then((data) => setDashboardData(data))
+      .then((data) => {
+        setDashboardData(data);
+        setLoading(false);
+      })
       .catch((err) => {
-        // TODO: Show user-friendly error message (e.g., toast notification)
-        // For now, we'll handle this in Priority #3
+        setError(t("api.error"));
+        setLoading(false);
         console.error("Failed to fetch dashboard data:", err);
       });
   };
@@ -36,20 +47,52 @@ const Dashboard: React.FC = () => {
 
   return (
     <Box sx={styles.box}>
-      <Button
-        variant="contained"
-        sx={styles.button}
-        onClick={() => setIsNewEntryOpen(true)}
+      {/* Error Alert Banner */}
+      <ErrorAlert
+        error={error}
+        onDismiss={() => setError(null)}
+        onRetry={fetchDashboardData}
+        retryButtonText="Retry"
+      />
+
+      {/* Loading Progress Bar */}
+      {loading && <LinearProgress sx={{ mb: 2 }} />}
+
+      {/* Action Buttons */}
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        sx={{ mb: 2, mt: 2 }}
       >
-        {t("addEntry.button")}
-      </Button>
+        <Button
+          variant="contained"
+          sx={styles.button}
+          onClick={() => setIsNewEntryOpen(true)}
+        >
+          {t("addEntry.button")}
+        </Button>
+        <IconButton
+          onClick={fetchDashboardData}
+          disabled={loading}
+          sx={styles.refreshButton}
+          aria-label="refresh data"
+        >
+          <RefreshIcon />
+        </IconButton>
+      </Stack>
+
+      {/* Data Grid */}
       <StyledDashboardGrid
         columns={columns}
         rows={rows}
         pagination
         checkboxSelection
         disableRowSelectionOnClick
-      ></StyledDashboardGrid>
+        loading={loading}
+      />
+
+      {/* New Entry Modal */}
       {isNewEntryOpen && (
         <NewEntry
           open={isNewEntryOpen}
@@ -68,11 +111,14 @@ const styles = {
     flexDirection: "column",
     backgroundColor: "background.paper",
     pt: "64px",
+    px: 2,
   },
   button: {
-    alignSelf: "flex-center",
     p: 1,
-    m: 4,
+  },
+  refreshButton: {
+    border: "1px solid",
+    borderColor: "primary.main",
   },
 };
 export { Dashboard };

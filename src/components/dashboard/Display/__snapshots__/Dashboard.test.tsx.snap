@@ -3,15 +3,49 @@
 exports[`<App> > matches snapshot 1`] = `
 <div>
   <div
-    class="MuiBox-root css-k6ke0i"
+    class="MuiBox-root css-p8vhyq"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sctp6o-MuiButtonBase-root-MuiButton-root"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-1d14519-MuiLinearProgress-root"
+      role="progressbar"
     >
-      Add New Shunt Entry
-    </button>
+      <span
+        class="MuiLinearProgress-bar MuiLinearProgress-bar1 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-lcqqge-MuiLinearProgress-bar1"
+      />
+      <span
+        class="MuiLinearProgress-bar MuiLinearProgress-bar2 MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-lfb3c7-MuiLinearProgress-bar2"
+      />
+    </span>
+    <div
+      class="MuiStack-root css-1d6ck2e-MuiStack-root"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-81lc5l-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Add New Shunt Entry
+      </button>
+      <button
+        aria-label="refresh data"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-ua7622-MuiButtonBase-root-MuiIconButton-root"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+          data-testid="RefreshIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z"
+          />
+        </svg>
+      </button>
+    </div>
     <div
       class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-withBorderColor MuiDataGridVariables-3851315942 css-10mzhy7-MuiDataGrid-root"
       style="--DataGrid-hasScrollX: 1; --DataGrid-hasScrollY: 0; --DataGrid-scrollbarSize: 0px; --DataGrid-rowWidth: 50px; --DataGrid-columnsTotalWidth: 50px; --DataGrid-leftPinnedWidth: 0px; --DataGrid-rightPinnedWidth: 0px; --DataGrid-headerHeight: 56px; --DataGrid-headersTotalHeight: 56px; --DataGrid-topContainerHeight: 56px; --DataGrid-bottomContainerHeight: 0px; --height: 52px;"
@@ -24,7 +58,7 @@ exports[`<App> > matches snapshot 1`] = `
           aria-colcount="1"
           aria-multiselectable="true"
           aria-rowcount="1"
-          class="MuiDataGrid-main css-1bgckiu-MuiDataGrid-main"
+          class="MuiDataGrid-main MuiDataGrid-main--hiddenContent css-1bgckiu-MuiDataGrid-main"
           role="grid"
           tabindex="-1"
         >
@@ -135,7 +169,7 @@ exports[`<App> > matches snapshot 1`] = `
               </div>
             </div>
             <div
-              class="MuiDataGrid-overlayWrapper css-107ft6p-MuiDataGrid-overlayWrapper"
+              class="MuiDataGrid-overlayWrapper css-1xvmu89-MuiDataGrid-overlayWrapper"
             >
               <div
                 class="MuiDataGrid-overlayWrapperInner css-1mbsuzk-MuiDataGrid-overlayWrapperInner"
@@ -143,8 +177,11 @@ exports[`<App> > matches snapshot 1`] = `
               >
                 <div
                   class="MuiDataGrid-overlay css-w16tsr-MuiDataGrid-overlay"
+                  style="display: block;"
                 >
-                  No rows
+                  <div
+                    class="MuiDataGrid-skeletonLoadingOverlay css-1qz4q6s-MuiDataGrid-skeletonLoadingOverlay"
+                  />
                 </div>
               </div>
             </div>
@@ -189,7 +226,7 @@ exports[`<App> > matches snapshot 1`] = `
               />
               <p
                 class="MuiTablePagination-selectLabel css-s09cke-MuiTablePagination-selectLabel"
-                id="«ra»"
+                id="«rc»"
               >
                 Rows per page:
               </p>
@@ -199,9 +236,9 @@ exports[`<App> > matches snapshot 1`] = `
                 <div
                   aria-expanded="false"
                   aria-haspopup="listbox"
-                  aria-labelledby="«ra» «r9»"
+                  aria-labelledby="«rc» «rb»"
                   class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-18zjd9i-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input"
-                  id="«r9»"
+                  id="«rb»"
                   role="combobox"
                   tabindex="0"
                 >
