@@ -1,8 +1,7 @@
 import { Button, Box, IconButton, LinearProgress, Stack } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { NewEntry } from "../NewEntry/NewEntry";
 import React from "react";
-import { useEffect } from "react";
 import { fetchUserShuntData } from "../../../api/shunts";
 import type { DashboardData } from "../types";
 import { createColumns } from "../utils";
@@ -19,7 +18,7 @@ const Dashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchDashboardData = () => {
+  const fetchDashboardData = useCallback(() => {
     setLoading(true);
     setError(null);
 
@@ -29,16 +28,17 @@ const Dashboard: React.FC = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setError(t("api.error"));
+        setError(t("dashboard.error"));
         setLoading(false);
         console.error("Failed to fetch dashboard data:", err);
       });
-  };
+  }, [t]);
 
-  useEffect(() => fetchDashboardData(), []);
+  useEffect(() => {
+    fetchDashboardData();
+  }, [fetchDashboardData]);
 
-  const displayData = dashboardData.length > 0 ? dashboardData : [];
-  const rows: Rows = displayData.map(({ user, activeShunt }, id) => ({
+  const rows: Rows = dashboardData.map(({ user, activeShunt }, id) => ({
     id: id,
     ...user,
     ...activeShunt,
