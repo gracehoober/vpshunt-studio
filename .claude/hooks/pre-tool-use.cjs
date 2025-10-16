@@ -1,13 +1,6 @@
-async function blockReadInEnvFile() {
-  // readBlock contains data from the stdin:
-  // {
-  //   "tool_name": "Read",
-  //     "tool_input": {
-  //     "file_path": "/Users/gracehoober/Developer/personal/vpshunt-studio/.env";
-  //   }
-  // }
-  const readBlock = '';
-  for await (const block of process.stdin) {
+async function blockReadInEnvFile(stdin = process.stdin) {
+  let readBlock = '';
+  for await (const block of stdin) {
     readBlock += block;
   }
 

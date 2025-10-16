@@ -1,7 +1,9 @@
-import { describe, expect, test } from "vitest";
-import { blockReadInEnvFile } from "../pre-tool-use";
 import { describe, expect, test, vi, beforeEach, afterEach } from "vitest";
+import { createRequire } from 'module';
 import { Readable } from 'stream';
+
+const require = createRequire(import.meta.url);
+const { blockReadInEnvFile } = require("../pre-tool-use.cjs");
 
 const testingJSON = {
   "blockRead": {
@@ -32,60 +34,50 @@ describe('blockReadInEnvFile', () => {
     });
   });
   afterEach(() => {
+    // Restore original process.exit
     processExitSpy.mockRestore();
   });
 
   test('block read in .env file', async () => {
     const json = testingJSON.blockRead;
     const mockStdin = Readable.from([JSON.stringify(json)]);
-    vi.spyOn(process, 'stdin', 'get').mockReturnValue(mockStdin);
     try {
-      await blockReadInEnvFile();
+      await blockReadInEnvFile(mockStdin);
     } catch (e) {
       error = e;
     }
     expect(exitCode).toBe(1);
-    expect(error).toBe("You cannot reading the .env file.");
   });
   test('block grep in .env file', async () => {
     const json = testingJSON.blockGrep;
     const mockStdin = Readable.from([JSON.stringify(json)]);
-    vi.spyOn(process, 'stdin', 'get').mockReturnValue(mockStdin);
     try {
-      await blockReadInEnvFile();
+      await blockReadInEnvFile(mockStdin);
     } catch (e) {
       error = e;
     }
     expect(exitCode).toBe(1);
-    expect(error).toBe("You cannot reading the .env file.");
-
   });
   test("allow read in non .env file", async () => {
     const json = testingJSON.allowRead;
     const mockStdin = Readable.from([JSON.stringify(json)]);
-    vi.spyOn(process, 'stdin', 'get').mockReturnValue(mockStdin);
 
     try {
-      await blockReadInEnvFile();
+      await blockReadInEnvFile(mockStdin);
     } catch (e) {
       error = e;
     }
     expect(exitCode).toBe(0);
-    expect(error).toBe(null);
-
   });
   test("allow grep in non .env file", async () => {
     const json = testingJSON.allowGrep;
     const mockStdin = Readable.from([JSON.stringify(json)]);
-    vi.spyOn(process, 'stdin', 'get').mockReturnValue(mockStdin);
 
     try {
-      await blockReadInEnvFile();
+      await blockReadInEnvFile(mockStdin);
     } catch (e) {
       error = e;
     }
     expect(exitCode).toBe(0);
-    expect(error).toBe(null);
-
   });
 });

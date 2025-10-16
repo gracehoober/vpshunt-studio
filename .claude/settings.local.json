@@ -3,7 +3,9 @@
     "PreToolUse": [
       {
         "matcher": "Read|Grep",
-        "hooks": [{ "type": "command", "command": "node ./hooks/env_hook" }]
+        "hooks": [
+          { "type": "command", "command": "node .claude/hooks/pre-tool-use.cjs" }
+        ]
       }
     ]
   }
