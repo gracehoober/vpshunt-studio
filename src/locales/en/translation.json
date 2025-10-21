@@ -4,7 +4,11 @@
   },
   "navBar": {
     "elements": {
-      "profile": "Profile/name"
+      "profile": "Profile/name",
+      "profileMenu": "Open profile menu"
+    },
+    "menu": {
+      "settings": "Settings"
     }
   },
   "dashboard": {
@@ -50,5 +54,14 @@
   },
   "imageLibrary": {
     "placeholder": "List of Images"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": {
+      "label": "Theme",
+      "ariaLabel": "Select theme mode",
+      "light": "Light",
+      "dark": "Dark"
+    }
   }
 }

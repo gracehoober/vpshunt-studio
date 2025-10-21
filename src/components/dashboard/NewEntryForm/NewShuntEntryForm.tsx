@@ -120,7 +120,12 @@ const styles = {
   button: {
     alignSelf: "center",
     m: 2,
-    color: "background.dashboard",
+    px: 4,
+    py: 1.5,
+    boxShadow: 2,
+    "&:hover": {
+      boxShadow: 3,
+    },
   },
 };
 

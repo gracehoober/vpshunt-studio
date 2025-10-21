@@ -36,9 +36,12 @@ describe("<NavBar>", () => {
     expect(title).toHaveTextContent("VP Shunt Studio");
   });
 
-  it("displays profile text as h5 heading", () => {
+  it("displays profile button with text", () => {
     render(<NavBar />);
-    const profile = screen.getByRole("heading", { level: 5 });
-    expect(profile).toHaveTextContent("Profile/name");
+    const profileButton = screen.getByRole("button", {
+      name: "Open profile menu",
+    });
+    expect(profileButton).toBeInTheDocument();
+    expect(profileButton).toHaveTextContent("Profile/name");
   });
 });

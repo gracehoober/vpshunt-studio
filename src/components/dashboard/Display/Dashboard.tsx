@@ -109,16 +109,27 @@ const styles = {
     maxWidth: "100%",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "background.paper",
+    backgroundColor: "background.default",
     pt: "64px",
     px: 2,
+    minHeight: "100vh",
   },
   button: {
-    p: 1,
+    px: 3,
+    py: 1.5,
+    boxShadow: 2,
+    "&:hover": {
+      boxShadow: 3,
+    },
   },
   refreshButton: {
     border: "1px solid",
     borderColor: "primary.main",
+    color: "primary.main",
+    "&:hover": {
+      backgroundColor: "primary.light",
+      opacity: 0.1,
+    },
   },
 };
 export { Dashboard };
