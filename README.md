@@ -14,9 +14,10 @@ Built with modern web technologies, it provides a user-friendly interface for up
 
 ## Features
 
-• Upload CSV data of patient records
 • Display a dashboard with current shunt status
+• Dark and light mode per user prefernce.
 • Simple, responsive UI for clinical workflows
+• 80% test coverage on application.
 
 ## Installation
 
