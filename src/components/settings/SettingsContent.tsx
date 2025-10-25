@@ -14,8 +14,8 @@ const SettingsContent: React.FC = () => {
   const { mode, setTheme } = useTheme();
   const { t } = useTranslation();
 
-  const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(event.target.value as "light" | "dark");
+  const handleThemeChange = (theme: "light" | "dark") => {
+    setTheme(theme);
   };
 
   return (
@@ -25,21 +25,16 @@ const SettingsContent: React.FC = () => {
           {t("settings.theme.label")}
         </FormLabel>
         <RadioGroup
-          aria-label={t("settings.theme.ariaLabel")}
-          name="theme-mode"
+          aria-labelledby="demo-theme-toggle"
+          name="theme-toggle"
+          row
           value={mode}
-          onChange={handleThemeChange}
+          onChange={(event) =>
+            handleThemeChange(event.target.value as "light" | "dark")
+          }
         >
-          <FormControlLabel
-            value="light"
-            control={<Radio />}
-            label={t("settings.theme.light")}
-          />
-          <FormControlLabel
-            value="dark"
-            control={<Radio />}
-            label={t("settings.theme.dark")}
-          />
+          <FormControlLabel value="light" control={<Radio />} label="Light" />
+          <FormControlLabel value="dark" control={<Radio />} label="Dark" />
         </RadioGroup>
       </FormControl>
     </Box>

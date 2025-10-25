@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Box sx={styles.box}>
       <Typography sx={styles.title} variant="h1" align="center">
-        {t("home.title")}
+        {t("home.title")} NAME
       </Typography>
       <Button sx={styles.dashButton} onClick={toDashboard} variant="contained">
         {t("home.toDashboard")}

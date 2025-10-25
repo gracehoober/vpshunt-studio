@@ -4,7 +4,7 @@
   },
   "navBar": {
     "elements": {
-      "profile": "Profile/name",
+      "profile": "Login/Name",
       "profileMenu": "Open profile menu"
     },
     "menu": {
@@ -22,7 +22,7 @@
     "add": "Add Entry"
   },
   "home": {
-    "title": "Welcome",
+    "title": "Welcome back,",
     "toDashboard": "My Dashboard"
   },
   "patient": {

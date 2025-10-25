@@ -94,9 +94,6 @@ const styles = {
   },
   profileButton: {
     color: "text.secondary",
-    "&:hover": {
-      bgcolor: "action.hover",
-    },
   },
   profileIcon: {
     fontSize: "2rem",
