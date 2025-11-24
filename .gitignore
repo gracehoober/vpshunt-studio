@@ -1,4 +1,4 @@
-# Logs
+# Frontend (Node/React)
 logs
 *.log
 npm-debug.log*
@@ -11,6 +11,24 @@ node_modules
 dist
 dist-ssr
 *.local
+coverage
+
+# Python (API)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
 # Editor directories and files
 .vscode/*
@@ -23,4 +41,6 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables
 .env
+.env.local
